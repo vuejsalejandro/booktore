@@ -1,0 +1,47 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript"
+        src="js/bootstrap.js">
+    </script>
+
+    <script type="text/javascript"
+        src="js/vue.js">
+    </script>
+    <style>
+   .rojo{
+        color: red;
+        font-weight: bold;
+    }
+    </style>     
+</head>
+<body>
+        
+   <main>
+        <h1 align="center">Ejemplo 2</h1>    
+        <hr>
+        </p>        
+        
+        Resultado:
+        <input size="3" maxlength="3" type="text" v-model="nota"/>        
+        <b v-if="nota && nota>6 && nota <=10"> APROBADO</b>
+        <b v-else-if="nota && nota >10"> FUERA DE RANGO</b>
+        <b class="text-warning" v-else> REPROBADO</b>
+
+   </main>
+   <script type="text/javascript">
+        new Vue({
+            el:'main',
+            data: {
+                nota:'6'
+            }
+        });
+   </script>
+</body>
+</html>

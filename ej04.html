@@ -1,0 +1,86 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript"
+        src="js/bootstrap.js">
+    </script>
+
+    <script type="text/javascript"
+        src="js/vue.js">
+    </script>    
+</head>
+<body>
+        
+   <main>
+       <br>
+        <h1 class="text-info" align="center">Ejemplo 4</h1>    
+        <hr>
+        </p>                
+
+        
+        <h3 class="text-info">Ingreso de Registros</h3>
+        <form @submit.prevent="createUser" class="form-control" item-width="70%">
+                <input v-model="objUser.nombre" type="text" placeholder="Nombre" class="form-control "  />
+            </br> 
+                <input v-model="objUser.apellido" type="text" placeholder="Apellido" class="form-control" />
+            </br> 
+                <input type="submit" value="Guardar" class="form-control btn btn-primary" />
+            </form>
+        
+        </br>   
+        <h3 class="text-info">Registros Guardados</h3>
+        <table width="70%" class="table table-bordered " align="center" border="2">            
+            <thead class="thead-light"> 
+                <th>Nombre</th>
+                <th>Apellido</th>
+            </thead>
+        <tbody>
+            <tr v-for="(item, idx) in users">
+                <td> {{item.nombre}}</td>
+                <td> {{item.apellido}}</td>
+            </tr>
+        </tbody>
+        </table>
+
+
+   </main>
+   <script type="text/javascript">
+        new Vue({
+            el:'main',
+            data: {
+                users:[
+                    {'nombre':'Alejandro', 'apellido': 'proano'},
+                    {'nombre':'Anto', 'apellido': 'vera'},
+                ],
+                objUser:{'nombre':null, 'apellido':null}
+            },
+            methods:{
+                createUser(){
+                    this.users.unshift(this.objUser);
+                    this.orderUser;
+                    this.objUser={'nombre':null, 'apellido':null}
+                }
+            },
+            computed:{
+                orderUser(){
+                    return this.users.sort(function(a,b){                        
+                        if(a.nombre > b.nombre){
+                            return 1;
+                        }
+                        if(a.nombre > b.nombre){
+                            return -1;
+                        }
+                        return 0;
+                    });
+                }
+            }
+        });
+   </script>
+</body>
+</html>
